@@ -5,19 +5,29 @@ using UnityEngine;
 public class PrintAndHide : MonoBehaviour
 {
     public Renderer rend;
-    private int i = 3;
+    private int i = 3;  // Start with 3
+    private int randBlue;
 
-    // Start is called before the first frame update
+
     void Start()
     {
-        i++;
-        Debug.Log(gameObject.name + "=" + i);
+        randBlue = Random.Range(150, 251);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        i++;
-        Debug.Log(gameObject.name + "=" + i);
+        i++;  
+        Debug.Log(gameObject.name + ":" + i);
+
+        if (gameObject.tag == "Red" && i == 100)
+        {
+            gameObject.SetActive(false);
+        }
+        else if (gameObject.tag == "Blue" && i == randBlue)
+        {
+            rend.enabled = false;
+        }
     }
 }
